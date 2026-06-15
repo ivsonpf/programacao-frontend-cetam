@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Projeto</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sabrina Carpenter</h1>
+        <img src="formato-foto-do-site-rolling-14.jpg" alt="A mais mais" width="500" height="300"> 
+        
+        <hr>
+
+        <h1>Be a Hacker</h1>
+        <iframe src="https://hackertyper.net/" width="600" height="400"></iframe>
+        
+        <hr>
+
+        <h1>Teatro Amazonas</h1>
+        <video controls width="600" height="360">
+            <source src="Cenário_do_teatro_amazonas_em.mp4" type="video/mp4">
+        </video>
+        
+        <hr>
+
+        <h1>Primeiro Canvas em Javascript</h1>
+        <canvas id="meuCanvas1" width="400" height="200"></canvas>
+
+        <hr>
+
+        <h2>Desenhando com Canvas</h2>
+        <canvas id="meuCanvas2" width="300" height="150"></canvas>
+
+        <hr>
+    
+        <h2>Exemplo com validações automáticas</h2>
+
+        <form>
+        <label>Nome:</label>
+        <input type="text" required maxlength="30"><br><br>
+
+        <label>Email:</label>
+        <input type="email" required><br><br>
+
+        <label>Idade (18 a 99):</label>
+        <input type="number" min="18" max="99"><br><br>
+
+        <label>Senha (mínimo 6 caracteres):</label>
+        <input type="password" minlength="6" required><br><br>
+
+        <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

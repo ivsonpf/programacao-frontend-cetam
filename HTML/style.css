@@ -1,0 +1,68 @@
+/* Configurações gerais da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Um container para centralizar e alinhar o conteúdo */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Garante que imagens e vídeos não quebrem o layout da tela */
+img, video, iframe {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Estilizando os dois canvas diretamente pelo CSS */
+canvas {
+    border: 2px solid #2c3e50;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 40px 0;
+}
+
+/* Estilizando o formulário */
+label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%; /* Faz a caixa ocupar a largura toda */
+    max-width: 300px; /* Mas limita até 300px */
+}
+
+input[type="submit"] {
+    background-color: #2c3e50;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #1a252f;
+}
