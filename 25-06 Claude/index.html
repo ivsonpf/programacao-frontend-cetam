@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Velha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =======================================================
+       TELA DE SELEÇÃO DE PERSONAGEM
+       Aparece primeiro. Cada jogador escolhe seu personagem.
+       ======================================================= -->
+  <section class="select-screen" id="selectScreen">
+    <h1>Escolha seu personagem</h1>
+
+    <div class="select-grid">
+
+      <!-- Card do Player 1 -->
+      <div class="select-card" id="card-player1">
+        <h2>Player 1 <span class="player-tag player-x">X</span></h2>
+        <!-- COLOQUE A IMAGEM DO PERSONAGEM DO PLAYER 1 AQUI (substitua o arquivo em /images/player1.png) -->
+        <img src="images/player1.png" alt="Personagem Player 1" class="character-img">
+        <button class="select-btn" data-player="1">Selecionar</button>
+      </div>
+
+      <!-- Card do Player 2 -->
+      <div class="select-card" id="card-player2">
+        <h2>Player 2 <span class="player-tag player-o">O</span></h2>
+        <!-- COLOQUE A IMAGEM DO PERSONAGEM DO PLAYER 2 AQUI (substitua o arquivo em /images/player2.png) -->
+        <img src="images/player2.png" alt="Personagem Player 2" class="character-img">
+        <button class="select-btn" data-player="2">Selecionar</button>
+      </div>
+
+    </div>
+
+    <button class="start-btn" id="startBtn" disabled>Começar Jogo</button>
+  </section>
+
+  <!-- =======================================================
+       TELA DO JOGO
+       Fica oculta até os dois personagens serem selecionados.
+       ======================================================= -->
+  <main class="game-container hidden" id="gameContainer">
+
+    <!-- Personagem do Player 1 (lado esquerdo) -->
+    <aside class="character-panel left">
+      <span class="floating-name">Player 1</span>
+      <img src="images/player1.png" alt="Personagem Player 1" class="character-img-game">
+    </aside>
+
+    <!-- Painel central: status + tabuleiro + botão -->
+    <div class="board-wrapper">
+      <h1>Jogo da Velha</h1>
+
+      <section class="status-panel" id="statusPanel" aria-live="polite">
+        Vez do jogador <span class="player-tag player-x">X</span>
+      </section>
+
+      <section class="board" id="board">
+        <button class="cell" data-index="0"></button>
+        <button class="cell" data-index="1"></button>
+        <button class="cell" data-index="2"></button>
+        <button class="cell" data-index="3"></button>
+        <button class="cell" data-index="4"></button>
+        <button class="cell" data-index="5"></button>
+        <button class="cell" data-index="6"></button>
+        <button class="cell" data-index="7"></button>
+        <button class="cell" data-index="8"></button>
+      </section>
+
+      <button class="restart-btn" id="restartBtn">Reiniciar Jogo</button>
+    </div>
+
+    <!-- Personagem do Player 2 (lado direito) -->
+    <aside class="character-panel right">
+      <span class="floating-name">Player 2</span>
+      <img src="images/player2.png" alt="Personagem Player 2" class="character-img-game">
+    </aside>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* ---------- Reset básico ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  padding: 20px;
+
+  /* Imagem de fundo fornecida pelo usuário */
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Overlay escuro para garantir legibilidade do conteúdo sobre o fundo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   TELA DE SELEÇÃO DE PERSONAGEM
+   ============================================================ */
+.select-screen {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.select-screen h1 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.select-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.select-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+/* Destaque visual quando o card foi selecionado */
+.select-card.selected {
+  border-color: #4caf50;
+  transform: scale(1.03);
+}
+
+.select-card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Espaço reservado para a imagem do personagem escolhido pelo usuário */
+.character-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  /* Caso a imagem ainda não exista, mostra um fundo tracejado como placeholder visual */
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+.select-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff5e62, #36d1dc);
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.select-btn:hover {
+  opacity: 0.85;
+}
+
+.start-btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: #4caf50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.start-btn:disabled {
+  background: #777;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.start-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   TELA DO JOGO (tabuleiro central + personagens nas laterais)
+   ============================================================ */
+.game-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Painéis laterais com os personagens */
+.character-panel {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  width: 150px;
+}
+
+.character-panel h3 {
+  margin: 0 0 10px;
+}
+
+.character-img-game {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+/* Painel central com o jogo */
+.board-wrapper {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.board-wrapper h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* ---------- Painel de status ---------- */
+.status-panel {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  min-height: 28px;
+}
+
+.player-tag {
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.player-x {
+  color: #ff5e62;
+  background: rgba(255, 94, 98, 0.15);
+}
+
+.player-o {
+  color: #36d1dc;
+  background: rgba(54, 209, 220, 0.15);
+}
+
+/* ---------- Tabuleiro com CSS Grid ---------- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.cell:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.03);
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+}
+
+.cell.x {
+  color: #ff5e62;
+}
+
+.cell.o {
+  color: #36d1dc;
+}
+
+.cell.winning-cell {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: #fff;
+}
+
+/* ---------- Botão de reiniciar ---------- */
+.restart-btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5e62, #36d1dc);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.restart-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 800px) {
+  .game-container {
+    flex-direction: column;
+  }
+
+  .character-panel {
+    width: 120px;
+  }
+
+  .character-img-game {
+    height: 110px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cell {
+    font-size: 2rem;
+  }
+
+  .board-wrapper {
+    padding: 20px;
+  }
+
+  .select-grid {
+    grid-template-columns: 1fr;
+  }
+}
